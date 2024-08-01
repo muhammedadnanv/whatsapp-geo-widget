@@ -1,0 +1,31 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Chat Widget</title>
+</head>
+<body>
+  <h1>Welcome to Our Website!</h1>
+  <div id="whatsapp-widget" style="display: none;">
+    <!-- WhatsApp widget code -->
+    <a href="https://wa.me/YOUR_NUMBER" target="_blank">
+      Chat with us on WhatsApp
+    </a>
+  </div>
+
+  <script>
+    // Fetch geolocation data from a public IP geolocation service
+    fetch('https://ipapi.co/json/') // You can also use 'https://ipinfo.io/json'
+      .then(response => response.json())
+      .then(data => {
+        const allowedCountries = ['United States', 'Canada']; // List of allowed countries
+        if (allowedCountries.includes(data.country_name)) {
+          document.getElementById('whatsapp-widget').style.display = 'block';
+        }
+      })
+      .catch(error => console.error('Error:', error));
+  </script>
+</body>
+</html>
